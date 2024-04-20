@@ -1,3 +1,11 @@
+## LOG:
+## Noah Wichman
+## 4/20 7:33 am PCT  - 9:48 am PCT
+## 4/20 10:02 am PCT - 2:47 pm PCT
+## TOTAL HOURS: 7 hours and 2 mins
+
+
+
 ## ---------------------------------------- ##
 ##                 Imports                       
 ## ---------------------------------------- ##
@@ -190,7 +198,7 @@ class SnakeGame:
         self.drawApple()            ## draw apple
         self.window.update()        ## update (RECURISSION AP CSA TOPIC LOL) keeps loop going
 
-        # Update again in 100 milliseconds
+        # Update again in 200 milliseconds
         self.window.ontimer(self.update, 200)
 
 
