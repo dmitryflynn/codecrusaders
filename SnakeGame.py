@@ -191,7 +191,7 @@ class SnakeGame:
         self.window.update()        ## update (RECURISSION AP CSA TOPIC LOL) keeps loop going
 
         # Update again in 100 milliseconds
-        self.window.ontimer(self.update, 100)
+        self.window.ontimer(self.update, 200)
 
 
     ## ---------------------------------------- ##
