@@ -49,6 +49,15 @@ buttonpi = Rect(20,300,40,40,fill='gray')
 buttonpi.value = math.pi
 buttonpiLabel = Label('π',40,320,fill='white',size=26)
 
+sin = Rect(20,360,40,40,fill='gray')
+sinLabel = Label('sin',40,380,fill='white',size=22)
+
+cos = Rect(80,360,40,40,fill='gray')
+cosLabel = Label('cos',100,380,fill='white',size=22)
+
+tan = Rect(140,360,40,40,fill='gray')
+tanLabel = Label('tan',160,380,fill='white',size=22)
+
 addition = Rect(340,120,40,40,fill='gray')
 additonLabel = Label('+',360,140,fill='white',size=26)
 
@@ -159,6 +168,30 @@ def onMousePress(mouseX,mouseY):
         app.current_numbers = []
         result.value = ''
     
+    elif sin.contains(mouseX, mouseY):
+        if app.currentnumber != '': 
+            app.currentnumber = math.sin(float(app.currentnumber))
+            total = app.currentnumber
+            result.value = str(total)
+            app.currentnumber = total
+            app.current_numbers = []
+
+    elif cos.contains(mouseX, mouseY):
+        if app.currentnumber != '': 
+            app.currentnumber = math.cos(float(app.currentnumber))
+            total = app.currentnumber
+            result.value = str(total)
+            app.currentnumber = total
+            app.current_numbers = []
+
+    elif tan.contains(mouseX, mouseY):
+        if app.currentnumber != '': 
+            app.currentnumber = math.tan(float(app.currentnumber))
+            total = app.currentnumber
+            result.value = str(total)
+            app.currentnumber = total
+            app.current_numbers = []
+
     ##Handles negative operator
     elif negative.contains(mouseX, mouseY):
         if app.currentnumber != '':  # Check if current number is not empty
