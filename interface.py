@@ -13,6 +13,9 @@ def main():
         open_file("calculator.py")
 
     def open_file2():
+        open_file("hourstracker.py")
+
+    def open_file3():
         open_file("SnakeGame.py")
 
     # Create buttons to open different files
@@ -21,6 +24,9 @@ def main():
 
     button2 = tk.Button(root, text="Snake", command=open_file2)
     button2.pack()
+
+    button3 = tk.Button(root, text="hourstracker", command=open_file3)
+    button3.pack()
 
     root.mainloop()
 

