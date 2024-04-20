@@ -6,5 +6,6 @@ circle = Circle(0,200,4,fill='green')
 
 for i in range(400):
      circle.centerX += 1
+     sleep(0.000001)
 
 cmu_graphics.run()  
