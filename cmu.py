@@ -1,9 +1,7 @@
-from cmu_graphics import *
-
 sky = Rect(0, 0, 400, 400, fill='midnightBlue')
 
 ground = Rect(0, 350, 400, 85,
-            fill=gradient(rgb(0, 60, 0), rgb(0, 80, 0), start='bottom'))
+              fill=gradient(rgb(0, 60, 0), rgb(0, 80, 0), start='bottom'))
 
 excalibur = Group(
     Polygon(185, 150, 215, 150, 215, 325, 200, 365, 185, 325,
@@ -18,7 +16,7 @@ gem = Circle(200, 60, 15, fill='grey', border='silver', borderWidth=6)
 
 excalibur.add(gem)
 
-# rockwd
+# rock
 Polygon(60, 395, 340, 395, 300, 345, 100, 345,
         fill=gradient('dimGrey', 'grey', start='bottom'))
 Rect(100, 315, 200, 30, fill=gradient('grey', 'silver', start='bottom'))
@@ -36,5 +34,3 @@ def onMouseRelease(mouseX, mouseY):
     sky.fill = 'midnightBlue'
     excalibur.centerY += 45
     pass
-
-cmu_graphics.run()
