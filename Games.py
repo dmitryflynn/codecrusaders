@@ -38,6 +38,7 @@ def drawSnake():
 background = Rect (0,0,400,400,   fill='darkgreen'                  )
 screen     = Rect (20,10,360,40,  fill='white',    border='darkgrey')
 title      = Label('Snake Game', 200,30,size=25)
+counter    = Label(0,50,30,             size=25)
 
 
 ## ----------------------------------------------------- ##
@@ -58,6 +59,8 @@ alive = True
 snakeSegments = [[115, 125], [135, 125], [155, 125]] 
 direction = 'd'
 tempVar = 0
+app.stepsPerSecond = 1
+
 
 
 ## ----------------------------------------------------- ##
@@ -67,6 +70,9 @@ drawSnake()
 while alive:
 
     tempVar += 1
+
+    def onStep():
+        counter.value += 1
 
     def onKeyPress(key):
 
