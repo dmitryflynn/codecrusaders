@@ -50,8 +50,11 @@ minusLabel = Label('-',360,200,fill='white',size=26)
 multiply = Rect(340,240,40,40,fill='gray')
 multiplyLabel = Label('X',360,260,fill='white',size=26)
 
-equals = Rect(340,300,40,40,fill='gray')
-equalsLabel = Label('=',360,320,fill='white',size=26)
+division = Rect(340,300,40,40,fill='gray')
+divisionLabel = Label('÷',360,320,fill='white',size=28)
+
+equals = Rect(340,360,40,40,fill='gray')
+equalsLabel = Label('=',360,380,fill='white',size=26)
 
 operator = 'plus'
 numbers = [button1,button2,button3,button4,button5,button6,button7,button8,button9]
@@ -74,35 +77,53 @@ def keyChecker(X, Y):
     
 def onMousePress(mouseX,mouseY):
     global operator
+
     if addition.contains(mouseX, mouseY):
         operator = 'plus'
         app.newnumber = int(app.currentnumber)
         app.currentnumber = ''
         app.current_numbers = []
         result.value = ''
+
     elif minus.contains(mouseX, mouseY):
         operator = 'subtract'
         app.newnumber = int(app.currentnumber)
         app.currentnumber = ''
         app.current_numbers = []
         result.value = ''
+
     elif multiply.contains(mouseX, mouseY):
         operator = 'multiply'
         app.newnumber = int(app.currentnumber)
         app.currentnumber = ''
         app.current_numbers = []
         result.value = ''
+
+    elif division.contains(mouseX, mouseY):
+        operator = 'divide'
+        app.newnumber = int(app.currentnumber)
+        app.currentnumber = ''
+        app.current_numbers = []
+        result.value = ''
+
     elif equals.contains(mouseX,mouseY):
         if operator == 'plus':
             total = app.newnumber + int(app.currentnumber)
             result.value = str(total)
             app.currentnumber = total
+
         elif operator == 'subtract':
             total = app.newnumber - int(app.currentnumber)
             result.value = str(total)
             app.currentnumber = total
+
         elif operator == 'multiply':
             total = app.newnumber * int(app.currentnumber)
+            result.value = str(total)
+            app.currentnumber = total
+
+        elif operator == 'divide':
+            total = app.newnumber / int(app.currentnumber)
             result.value = str(total)
             app.currentnumber = total
     else:
