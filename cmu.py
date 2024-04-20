@@ -31,7 +31,7 @@ def onMousePress(mouseX, mouseY):
     pass
 
 def onMouseRelease(mouseX, mouseY):
-    # Return Excalibur to the stone and darken the sky and gem.
+    # Return Excalibur to the stone and darken the sky and gem.r
     gem.fill = 'grey'
     sky.fill = 'midnightBlue'
     excalibur.centerY += 45
