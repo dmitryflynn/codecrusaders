@@ -15,3 +15,9 @@ cmu_graphics.run()
 def onKeyPress(key):
     keyLabel.value = key
     print(keyLabel)
+
+
+def onKeyPress(key):
+    # Move the sword and brighten the sky and gem in Excalibur's handle.
+    print('hhhhhh')
+    pass
