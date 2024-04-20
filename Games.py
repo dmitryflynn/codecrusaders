@@ -1,129 +1,150 @@
-## ----------------------------------------------------- ##
-##            /Importing Graphics and random/              
-## ----------------------------------------------------- ##
-from cmu_graphics import *
-from random import *
+import turtle
+import random
 
+# Constants
+CELL_SIZE = 20
+GRID_WIDTH = 20
+GRID_HEIGHT = 15
 
-## ----------------------------------------------------- ##
-##                 /Draw Snake Function/                         
-## ----------------------------------------------------- ##
-def drawSnake():
+# Directions
+UP = 0
+DOWN = 1
+LEFT = 2
+RIGHT = 3
 
-    # Delcaring Vars
-    colorTurn = 0
-    blockSize = 15
-    x = 100  
-    
+# Colors
+SNAKE_COLOR = "green"
+FRUIT_COLOR = "red"
+GRID_COLOR = "black"
 
-    # For loop to go through each part of the Snake
-    for segment in snakeSegments:
-        
-        # Swaps between 1 and 2 each time 
-        colorTurn = (colorTurn % 2) + 1
+class SnakeGame:
+    def __init__(self):
+        self.window = turtle.Screen()
+        self.window.title("Snake Game")
+        self.window.setup(GRID_WIDTH * CELL_SIZE, GRID_HEIGHT * CELL_SIZE)
+        self.window.bgcolor("white")
+        self.window.tracer(0)  # Turn off animation
 
-        #Draws the snake based on which color it is
-        if colorTurn == 1:
-            app.snake = Rect(x, segment[1], blockSize, blockSize, fill='green')
-        elif colorTurn == 2:
-            app.snake = Rect(x, segment[1], blockSize, blockSize, fill='lightgreen')
+        self.snake = [(GRID_WIDTH // 2, GRID_HEIGHT // 2)]
+        self.direction = RIGHT
+        self.fruit = self.generate_fruit()
+        self.score = 0
 
-        # Increase x for the next loop
-        x += blockSize  
+        self.pen = turtle.Turtle()
+        self.pen.penup()
+        self.pen.hideturtle()
+        self.pen.goto(0, GRID_HEIGHT * CELL_SIZE // 2 - 20)
+        self.pen.write("Score: {}".format(self.score), align="center", font=("Courier", 24, "normal"))
 
+        self.window.listen()
+        self.window.onkeypress(self.go_up, "Up")
+        self.window.onkeypress(self.go_down, "Down")
+        self.window.onkeypress(self.go_left, "Left")
+        self.window.onkeypress(self.go_right, "Right")
 
-## ----------------------------------------------------- ##
-##             /Making background and title/                
-## ----------------------------------------------------- ##
-background = Rect (0,0,400,400,   fill='darkgreen'                  )
-screen     = Rect (20,10,360,40,  fill='white',    border='darkgrey')
-title      = Label('Snake Game', 200,30,size=25)
-counter    = Label(0,50,30,             size=25)
+        self.update()
 
+    def generate_fruit(self):
+        while True:
+            x = random.randint(0, GRID_WIDTH - 1)
+            y = random.randint(0, GRID_HEIGHT - 1)
+            if (x, y) not in self.snake:
+                return (x, y)
 
-## ----------------------------------------------------- ##
-##             /Making Walls to mark boders/                
-## ----------------------------------------------------- ##
-TopWall    = Line(10,90,390,90, lineWidth=10, fill='black')
-LeftWall   = Line(10,85,10,385,   lineWidth=10, fill='black')
-RightWall  = Line(390,85,390,385, lineWidth=10, fill='black')
-BottomWall = Line(10,380,390,380, lineWidth=10, fill='black')
+    def draw_cell(self, x, y, color):
+        self.pen.goto(x * CELL_SIZE - GRID_WIDTH * CELL_SIZE // 2, y * CELL_SIZE - GRID_HEIGHT * CELL_SIZE // 2)
+        self.pen.pendown()
+        self.pen.begin_fill()
+        for _ in range(4):
+            self.pen.forward(CELL_SIZE)
+            self.pen.right(90)
+        self.pen.end_fill()
+        self.pen.penup()
 
+    def draw_snake(self):
+        for x, y in self.snake:
+            self.draw_cell(x, y, SNAKE_COLOR)
 
-## ----------------------------------------------------- ##
-##                 /Coords List / Vars/                         
-## ----------------------------------------------------- ##
-possible_x_coords = [25 , 45 , 65 , 85 , 115, 135, 155, 175, 195, 215, 235, 255, 275, 295, 315, 335, 355, 375]
-possible_y_coords = [105, 105, 125, 145, 165, 185, 205, 225, 245, 265, 285, 305, 325, 345, 365]
-alive = True
-snakeSegments = [[105, 115]] 
-app.direction = 'd'
-tempVar = 0
-app.stepsPerSecond = 1
+    def draw_fruit(self):
+        self.draw_cell(*self.fruit, FRUIT_COLOR)
 
+    def draw_grid(self):
+        self.pen.color(GRID_COLOR)
+        for x in range(-GRID_WIDTH // 2, GRID_WIDTH // 2 + 1):
+            self.pen.goto(x * CELL_SIZE, -GRID_HEIGHT * CELL_SIZE // 2)
+            self.pen.pendown()
+            self.pen.goto(x * CELL_SIZE, GRID_HEIGHT * CELL_SIZE // 2)
+            self.pen.penup()
+        for y in range(-GRID_HEIGHT // 2, GRID_HEIGHT // 2 + 1):
+            self.pen.goto(-GRID_WIDTH * CELL_SIZE // 2, y * CELL_SIZE)
+            self.pen.pendown()
+            self.pen.goto(GRID_WIDTH * CELL_SIZE // 2, y * CELL_SIZE)
+            self.pen.penup()
 
+    def go_up(self):
+        if self.direction != DOWN:
+            self.direction = UP
 
-## ----------------------------------------------------- ##
-##                   /Main While Loop/                     
-## ----------------------------------------------------- ##
-while alive:
+    def go_down(self):
+        if self.direction != UP:
+            self.direction = DOWN
 
-    tempVar += 1
+    def go_left(self):
+        if self.direction != RIGHT:
+            self.direction = LEFT
 
-    #Letting time go by 1 second / adding to the counter
-    def onStep():
-        counter.value += 1
-        if app.direction == 'd':  
-                for segment in snakeSegments:
-                    app.snake.centerX += 20
-        if app.direction == 'a':  
-                for segment in snakeSegments:
-                    app.snake.centerX -= 20
-        if app.direction == 's':  
-                for segment in snakeSegments:
-                    app.snake.centerY += 20
-        if app.direction == 'w':  
-                for segment in snakeSegments:
-                    app.snake.centerY -= 20
+    def go_right(self):
+        if self.direction != LEFT:
+            self.direction = RIGHT
 
-#Swaping app.direction per movement
-    def onKeyPress(key):
-        if key == 'd':  
-            app.direction = 'd'
-        if key == 'a':
-            app.direction = 'a'
-        if key == 's':
-            app.direction = 's'
-        if key == 'w':
-            app.direction = 'w'
+    def update(self):
+        # Move the snake
+        head = self.snake[0]
+        if self.direction == UP:
+            new_head = (head[0], head[1] + 1)
+        elif self.direction == DOWN:
+            new_head = (head[0], head[1] - 1)
+        elif self.direction == LEFT:
+            new_head = (head[0] - 1, head[1])
+        elif self.direction == RIGHT:
+            new_head = (head[0] + 1, head[1])
 
+        # Check for collision
+        if (
+            new_head[0] < 0
+            or new_head[0] >= GRID_WIDTH
+            or new_head[1] < 0
+            or new_head[1] >= GRID_HEIGHT
+            or new_head in self.snake
+        ):
+            self.game_over()
 
+        # Check if the snake eats the fruit
+        if new_head == self.fruit:
+            self.score += 1
+            self.pen.clear()
+            self.pen.write("Score: {}".format(self.score), align="center", font=("Courier", 24, "normal"))
+            self.snake.insert(0, new_head)
+            self.fruit = self.generate_fruit()
+        else:
+            self.snake.insert(0, new_head)
+            self.snake.pop()
 
-    drawSnake()
+        self.pen.clear()
+        self.draw_grid()
+        self.draw_snake()
+        self.draw_fruit()
+        self.window.update()
 
-    apple_x = choice(possible_x_coords)
-    apple_y = choice(possible_y_coords)
+        # Update again in 100 milliseconds
+        self.window.ontimer(self.update, 100)
 
-    apple = Circle(apple_x, apple_y, 10, fill='Red', borderWidth=5)
+    def game_over(self):
+        self.pen.goto(0, 0)
+        self.pen.write("Game Over", align="center", font=("Courier", 24, "normal"))
+        self.window.update()
+        self.window.mainloop()
 
-    if tempVar > 10:
-        break
-    ## IF snake hitshape apple apple_x += snakeSeg
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-cmu_graphics.run()
-
-
+# Run the game
+game = SnakeGame()
+game.window.mainloop()
