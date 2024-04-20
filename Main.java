@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 //Imports
 import java.util.Scanner;
@@ -14,4 +15,9 @@ public class Main {
         String LInput = scanner.nextString();
         System.out.println(LInput);
     }
+=======
+public main{
+    //This is a test
+    //sigmonius
+>>>>>>> 84735dc4b4cddfcdb2cbc6455b229e3cb5af94ca
 }
