@@ -1,8 +1,10 @@
 from cmu_graphics import *
 
+app.total_hours = 0
 background = Rect(0, 0, 400, 400, fill='lightgrey')
 title = Label('Honor Society Tracker', 200, 20, size=25)
-awards_label = Label('', 200, 320, size=15)
+awards_label_1 = Label('', 200, 320, size=15)
+awards_label_2 = Label('', 200, 340, size=15)
 
 inputer = Group(
     Rect(20, 50, 360, 40, fill='lightgrey', border='darkgrey'),
@@ -17,7 +19,6 @@ def add_entry(entry):
         entries.pop(0)
     entries.append(entry)
     display_entries()
-    app.total_hours = sum(hours for _, hours in entries)
     check_awards(app.total_hours)
 
 def onMousePress(mouseX, mouseY):
@@ -27,6 +28,7 @@ def onMousePress(mouseX, mouseY):
         if purpose:
             hours = app.getTextInput('How many hours did you spend on this? ')
             if hours.isdigit():
+                app.total_hours += int(hours)
                 entry = (purpose, int(hours))
                 add_entry(entry)
 
@@ -62,11 +64,15 @@ def check_awards(total_hours):
 
             print("Eligible Awards:", awards_eligible)
             if awards_eligible:
-                awards_label.value = f'You are eligible for the following awards: {", ".join(awards_eligible)}'
+                awards_text = f'You are eligible for the following awards: {", ".join(awards_eligible)}'
+                # Split the text at the colon
+                awards_text_parts = awards_text.split(':', 1)
+                awards_label_1.value = awards_text_parts[0]
+                awards_label_2.value = awards_text_parts[1]
             else:
-                awards_label.value = 'You are not eligible for any awards yet.'
+                awards_label_1.value = 'You are not eligible for any awards yet.'
         else:
-            awards_label.value = 'Unable to determine age group. Please contact support.'
+            awards_label_1.value = 'Unable to determine age group. Please contact support.'
 
 
 def determine_age_group(age):
