@@ -68,19 +68,21 @@ while alive:
 
     tempVar += 1
 
+    def onKeyPress(key):
 
-    if direction == 'd':
-        for segment in snakeSegments:
-            snake.centerX += 20
-    if direction == 'a':
-        for segment in snakeSegments:
-            snake.centerX -= 20
-    if direction == 'w':
-        for segment in snakeSegments:
-            snake.centerY += 20
-    if direction == 's':
-        for segment in snakeSegments:
-            snake.centerY -= 20            
+
+        if key == 'd':
+            for segment in snakeSegments:
+                snake.centerX += 20
+        if key == 'a':
+            for segment in snakeSegments:
+                snake.centerX -= 20
+        if key == 'w':
+            for segment in snakeSegments:
+                snake.centerY += 20
+        if key == 's':
+            for segment in snakeSegments:
+                snake.centerY -= 20            
 
     drawSnake()
 

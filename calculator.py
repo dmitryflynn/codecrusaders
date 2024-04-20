@@ -57,6 +57,9 @@ multiplyLabel = Label('X',360,260,fill='white',size=26)
 division = Rect(340,300,40,40,fill='gray')
 divisionLabel = Label('÷',360,320,fill='white',size=28)
 
+negative = Rect(140,300,40,40,fill='gray')
+negativeLabel = Label('(-)',160,320,fill='white',size=26)
+
 equals = Rect(340,360,40,40,fill='gray')
 equalsLabel = Label('=',360,380,fill='white',size=26)
 
@@ -109,12 +112,16 @@ def onMousePress(mouseX,mouseY):
         app.currentnumber = ''
         app.current_numbers = []
         result.value = ''
+    
+    elif negative.contains(mouseX, mouseY):
+        operator = 'negative'
+        app.currentnumber = str(int(app.currentnumber)*-1)
 
     elif equals.contains(mouseX,mouseY):
         if operator == 'plus':
             total = app.newnumber + int(app.currentnumber)
             result.value = str(total)
-            app.currentnumber = total
+            app.currentnumber = 0
 
         elif operator == 'subtract':
             total = app.newnumber - int(app.currentnumber)
