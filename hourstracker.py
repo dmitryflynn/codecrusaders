@@ -14,8 +14,7 @@ inputer = Group(
 def onMousePress(mouseX,mouseY):
     if inputer.contains(mouseX,mouseY):
         purpose = app.getTextInput('What is the name of the entry?')
-    while True:
-        os.fork()
+
 
 
 cmu_graphics.run()
