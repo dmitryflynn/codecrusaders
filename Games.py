@@ -14,6 +14,7 @@ def drawSnake():
     colorTurn = 0
     blockSize = 15
     x = 100  
+    
 
     # For loop to go through each part of the Snake
     for segment in snakeSegments:
@@ -42,25 +43,43 @@ title      = Label('Snake Game', 200,30,size=25)
 ## ----------------------------------------------------- ##
 ##             /Making Walls to mark boders/                
 ## ----------------------------------------------------- ##
-TopWall    = Line(10,100,380,100, lineWidth=10, fill='black')
-LeftWall   = Line(10,95,10,390,   lineWidth=10, fill='black')
-RightWall  = Line(380,95,380,390, lineWidth=10, fill='black')
-BottomWall = Line(10,385,380,385, lineWidth=10, fill='black')
+TopWall    = Line(10,90,390,90, lineWidth=10, fill='black')
+LeftWall   = Line(10,85,10,385,   lineWidth=10, fill='black')
+RightWall  = Line(390,85,390,385, lineWidth=10, fill='black')
+BottomWall = Line(10,380,390,380, lineWidth=10, fill='black')
 
 
 ## ----------------------------------------------------- ##
 ##                 /Coords List / Vars/                         
 ## ----------------------------------------------------- ##
-possible_x_coords = [115, 135, 155, 175, 195, 215, 235, 255, 275, 295, 315, 335, 355, 375]
-possible_y_coords = [105, 125, 145, 165, 185, 205, 225, 245, 265, 285, 305, 325, 345, 365]
+possible_x_coords = [25 , 45 , 65 , 85 , 115, 135, 155, 175, 195, 215, 235, 255, 275, 295, 315, 335, 355, 375]
+possible_y_coords = [105, 105, 125, 145, 165, 185, 205, 225, 245, 265, 285, 305, 325, 345, 365]
 alive = True
-snakeSegments = [[115, 105], [135, 105], [155, 365]] 
+snakeSegments = [[115, 125], [135, 125], [155, 125]] 
+direction = 'd'
+tempVar = 0
 
 
 ## ----------------------------------------------------- ##
 ##                   /Main While Loop/                     
 ## ----------------------------------------------------- ##
-while alive:
+"""while alive:
+
+    tempVar += 1
+
+
+    if direction == 'd':
+        for segment in snakeSegments:
+            segment[0] += 20
+    if direction == 'a':
+        for segment in snakeSegments:
+            segment[0] -= 20
+    if direction == 'w':
+        for segment in snakeSegments:
+            segment[1] += 20
+    if direction == 's':
+        for segment in snakeSegments:
+            segment[1] -= 20            
 
     drawSnake()
 
@@ -68,15 +87,15 @@ while alive:
     apple_y = choice(possible_y_coords)
 
     apple = Circle(apple_x, apple_y, 10, fill='Red', borderWidth=5)
-    alive = False
 
-
+    if tempVar > 10:
+        break
     ## IF snake hitshape apple apple_x += snakeSeg
 
-
-
-
-
+"""
+drawSnake()
+snakeSegments = [[125, 125], [155, 125], [175, 125]] 
+drawSnake()
 
 
 
