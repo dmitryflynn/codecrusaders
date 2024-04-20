@@ -8,16 +8,22 @@ Create a project that can impove students life
 
 Groups:
 
-Games: Snake, (Python)
+Games: (Noah)
+ Snake, 
 
-Scdecule: Add stuff (Title, date, notes), Remove stuff(Title), Reminders (Headsup top right of app)
+Scdecule: 
+Add stuff (Title, date, notes), Remove stuff(Title), Reminders (Headsup top right of app)
 
-CALUCLATOR: Basic math, Slope Getter (Python)
+CALUCLATOR: (Flynn)
+Basic math, Slope Getter 
 
-Volunteer Hour tracker: keep track of hours add stuff(Total hour, What u did, contanct info)
+Volunteer Hour tracker: 
+keep track of hours add stuff(Total hour, What u did, contanct info)
 
-Study resource: (Drivers ed)
+Study resource:
+ (Drivers ed)
 
-Fiance: (Jobs income, gas money caluctor how much cash u can spend)
+Fiance:
+ (Jobs income, gas money caluctor how much cash u can spend)
 
 
