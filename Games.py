@@ -24,9 +24,9 @@ def drawSnake():
 
         #Draws the snake based on which color it is
         if colorTurn == 1:
-            snake = Rect(x, segment[1], blockSize, blockSize, fill='green')
+            app.snake = Rect(x, segment[1], blockSize, blockSize, fill='green')
         elif colorTurn == 2:
-            snake = Rect(x, segment[1], blockSize, blockSize, fill='lightgreen')
+            app.snake = Rect(x, segment[1], blockSize, blockSize, fill='lightgreen')
 
         # Increase x for the next loop
         x += blockSize  
@@ -71,18 +71,18 @@ while alive:
     def onKeyPress(key):
 
 
-        if key == 'd':
+        if key == 'd':  
             for segment in snakeSegments:
-                snake.centerX += 20
+                app.snake.centerX += 20
         if key == 'a':
             for segment in snakeSegments:
-                snake.centerX -= 20
+                app.snake.centerX -= 20
         if key == 'w':
             for segment in snakeSegments:
-                snake.centerY += 20
+                app.snake.centerY += 20
         if key == 's':
             for segment in snakeSegments:
-                snake.centerY -= 20            
+                app.snake.centerY -= 20                     
 
     drawSnake()
 
