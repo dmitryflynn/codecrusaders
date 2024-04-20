@@ -41,9 +41,9 @@ button9 = Rect(140,240,40,40,fill='gray')
 button9.value = 9
 button9Label = Label('9',160,260,fill='white',size=26)
 
-button0 = Rect(140,300,40,40,fill='gray')
+button0 = Rect(80,300,40,40,fill='gray')
 button0.value = 0
-button0Label = Label('0',160,320,fill='white',size=26)
+button0Label = Label('0',100,320,fill='white',size=26)
 
 addition = Rect(340,120,40,40,fill='gray')
 additonLabel = Label('+',360,140,fill='white',size=26)
