@@ -12,10 +12,10 @@ def main():
     def open_file1():
         open_file("calculator.py")
 
-    def open_file2():
+    def open_file3():
         open_file("hourstracker.py")
 
-    def open_file3():
+    def open_file2():
         open_file("SnakeGame.py")
 
     # Create buttons to open different files
