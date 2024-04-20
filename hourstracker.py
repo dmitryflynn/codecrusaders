@@ -12,9 +12,6 @@ inputer = Group(
 def onMousePress(mouseX,mouseY):
     if inputer.contains(mouseX,mouseY):
         purpose = app.getTextInput('What is the name of the entry?')
-        inputer[0].fill='darkgrey'
-def onMouseRelease(mouseX,mouseY):
-    if inputer.contains(mouseX,mouseY):
-            inputer[0].fill='lightgrey'
+
 
 cmu_graphics.run()
