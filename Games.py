@@ -77,10 +77,10 @@ while alive:
         if key == 'a':
             for segment in snakeSegments:
                 app.snake.centerX -= 20
-        if key == 'w':
+        if key == 's':
             for segment in snakeSegments:
                 app.snake.centerY += 20
-        if key == 's':
+        if key == 'w':
             for segment in snakeSegments:
                 app.snake.centerY -= 20                     
 
