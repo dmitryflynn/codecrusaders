@@ -1,7 +1,10 @@
+from cmu_graphics import *
+
+
 sky = Rect(0, 0, 400, 400, fill='midnightBlue')
 
 ground = Rect(0, 350, 400, 85,
-              fill=gradient(rgb(0, 60, 0), rgb(0, 80, 0), start='bottom'))
+            fill=gradient(rgb(0, 60, 0), rgb(0, 80, 0), start='bottom'))
 
 excalibur = Group(
     Polygon(185, 150, 215, 150, 215, 325, 200, 365, 185, 325,
@@ -34,3 +37,6 @@ def onMouseRelease(mouseX, mouseY):
     sky.fill = 'midnightBlue'
     excalibur.centerY += 45
     pass
+
+
+cmu_graphics.run()
