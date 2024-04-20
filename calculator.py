@@ -115,7 +115,8 @@ def onMousePress(mouseX,mouseY):
     
     elif negative.contains(mouseX, mouseY):
         operator = 'negative'
-        app.currentnumber = str(int(app.currentnumber)*-1)
+        app.currentnumber = int(app.currentnumber)*-1
+        app.currentnumber = str(app.currentnumber)
         result.value = app.currentnumber
 
     elif equals.contains(mouseX,mouseY):
