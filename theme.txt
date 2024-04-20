@@ -8,9 +8,10 @@ Create a project that can impove students life
 
 Groups:
 
-Games: (Noah)
- Snake, 
-
+/ -----------DONE----------------/
+    Games: (Noah)                      
+        Snake, 
+/ -----------DONE---------------/
 Scdecule: 
 Add stuff (Title, date, notes), Remove stuff(Title), Reminders (Headsup top right of app)
 
