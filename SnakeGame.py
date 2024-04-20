@@ -190,7 +190,7 @@ class SnakeGame:
         self.drawApple()            ## draw apple
         self.window.update()        ## update (RECURISSION AP CSA TOPIC LOL) keeps loop going
 
-        # Update again in 100 milliseconds
+        # Update again in 200 milliseconds
         self.window.ontimer(self.update, 200)
 
 
