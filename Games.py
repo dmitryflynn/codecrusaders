@@ -56,8 +56,8 @@ BottomWall = Line(10,380,390,380, lineWidth=10, fill='black')
 possible_x_coords = [25 , 45 , 65 , 85 , 115, 135, 155, 175, 195, 215, 235, 255, 275, 295, 315, 335, 355, 375]
 possible_y_coords = [105, 105, 125, 145, 165, 185, 205, 225, 245, 265, 285, 305, 325, 345, 365]
 alive = True
-snakeSegments = [[105, 115]] 
-direction = 'd'
+snakeSegments = [[115, 125]] 
+app.direction = 'd'
 tempVar = 0
 app.stepsPerSecond = 1
 
@@ -73,29 +73,29 @@ while alive:
     #Letting time go by 1 second / adding to the counter
     def onStep():
         counter.value += 1
-        if direction == 'd':  
+        if app.direction == 'd':  
                 for segment in snakeSegments:
                     app.snake.centerX += 20
-        if direction == 'a':  
+        if app.direction == 'a':  
                 for segment in snakeSegments:
                     app.snake.centerX -= 20
-        if direction == 's':  
+        if app.direction == 's':  
                 for segment in snakeSegments:
                     app.snake.centerY += 20
-        if direction == 'w':  
+        if app.direction == 'w':  
                 for segment in snakeSegments:
                     app.snake.centerY -= 20
 
-#Swaping direction per movement
-        def onKeyPress(key):
-            if key == 'd':  
-                direction = 'd'
-            if key == 'a':
-                direction = 'a'
-            if key == 's':
-                direction = 's'
-            if key == 'w':
-                direction = 'w'
+#Swaping app.direction per movement
+    def onKeyPress(key):
+        if key == 'd':  
+            app.direction = 'd'
+        if key == 'a':
+            app.direction = 'a'
+        if key == 's':
+            app.direction = 's'
+        if key == 'w':
+            app.direction = 'w'
 
 
 
