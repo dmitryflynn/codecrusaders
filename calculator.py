@@ -49,7 +49,7 @@ equalsLabel = Label('=',360,320,fill='white',size=26)
 
 operator = 'plus'
 numbers = [button1,button2,button3,button4,button5,button6,button7,button8,button9]
-current_numbers = []
+app.current_numbers = []
 app.currentnumber = ''
 app.newnumber = 0
 result = Label(app.currentnumber,200,200,fill='white',size=30)
@@ -59,11 +59,11 @@ def keyChecker(X, Y):
     for i in range(len(numbers)):
         if numbers[i].contains(X, Y):
 
-            current_numbers.append(numbers[i].value)
+            app.current_numbers.append(numbers[i].value)
             app.currentnumber = ''
-            for k in range(len(current_numbers)):
-                app.currentnumber += str(current_numbers[k])
-                
+            for k in range(len(app.current_numbers)):
+                app.currentnumber += str(app.current_numbers[k])
+                print(app.currentnumber)
             result.value = app.currentnumber
     
 def onMousePress(mouseX,mouseY):
@@ -72,6 +72,7 @@ def onMousePress(mouseX,mouseY):
         operator = 'plus'
         app.newnumber = int(app.currentnumber)
         app.currentnumber = ''
+        app.current_numbers = []
         result.value = ''
     elif equals.contains(mouseX,mouseY):
         if operator == 'plus':
