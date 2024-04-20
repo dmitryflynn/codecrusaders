@@ -1,5 +1,4 @@
 from cmu_graphics import *
-import cmu_graphics
 
 sky = Rect(0, 0, 400, 400, fill='midnightBlue')
 
