@@ -41,6 +41,10 @@ button9 = Rect(140,240,40,40,fill='gray')
 button9.value = 9
 button9Label = Label('9',160,260,fill='white',size=26)
 
+button0 = Rect(140,300,40,40,fill='gray')
+button0.value = 0
+button0Label = Label('0',160,320,fill='white',size=26)
+
 addition = Rect(340,120,40,40,fill='gray')
 additonLabel = Label('+',360,140,fill='white',size=26)
 
@@ -57,7 +61,7 @@ equals = Rect(340,360,40,40,fill='gray')
 equalsLabel = Label('=',360,380,fill='white',size=26)
 
 operator = 'plus'
-numbers = [button1,button2,button3,button4,button5,button6,button7,button8,button9]
+numbers = [button1,button2,button3,button4,button5,button6,button7,button8,button9,button0]
 app.current_numbers = []
 app.currentnumber = ''
 app.newnumber = 0
