@@ -12,6 +12,7 @@ Groups:
     Games: (Noah)                      
         Snake, 
 / -----------DONE---------------/
+
 Scdecule: 
 Add stuff (Title, date, notes), Remove stuff(Title), Reminders (Headsup top right of app)
 
