@@ -1,8 +1,8 @@
 from cmu_graphics import *
-
+import math
 
 background = Rect(0,0,400,400,fill='lightgrey')
-title = Label('Calulator App', 200,20,size=25)
+title = Label('Calculator App', 200,20,size=25)
 screen = Rect(20,40,360,60,fill='white',border='darkgrey')
 
 button1 = Rect(20,120,40,40,fill='gray')
@@ -45,14 +45,27 @@ button0 = Rect(80,300,40,40,fill='gray')
 button0.value = 0
 button0Label = Label('0',100,320,fill='white',size=26)
 
+buttonpi = Rect(20,300,40,40,fill='gray')
+buttonpi.value = math.pi
+buttonpiLabel = Label('π',40,320,fill='white',size=26)
+
 addition = Rect(340,120,40,40,fill='gray')
 additonLabel = Label('+',360,140,fill='white',size=26)
+
+exponent = Rect(280,120,40,40,fill='gray')
+exponentLabel = Label('^',300,140,fill='white',size=26)
 
 minus = Rect(340,180,40,40,fill='gray')
 minusLabel = Label('-',360,200,fill='white',size=26)
 
+root = Rect(280,180,40,40,fill='gray')
+rootLabel = Label('√',300,200,fill='white',size=26)
+
 multiply = Rect(340,240,40,40,fill='gray')
 multiplyLabel = Label('X',360,260,fill='white',size=26)
+
+modulo = Rect(280,240,40,40,fill='gray')
+moduloLabel = Label('%',300,260,fill='white',size=26)
 
 division = Rect(340,300,40,40,fill='gray')
 divisionLabel = Label('÷',360,320,fill='white',size=28)
@@ -63,12 +76,15 @@ negativeLabel = Label('(-)',160,320,fill='white',size=26)
 equals = Rect(340,360,40,40,fill='gray')
 equalsLabel = Label('=',360,380,fill='white',size=26)
 
+clear = Rect(280,360,40,40,fill='gray')
+clearLabel = Label('AC',300,380,fill='white',size=26)
+
 operator = 'plus'
-numbers = [button1,button2,button3,button4,button5,button6,button7,button8,button9,button0]
+numbers = [button1,button2,button3,button4,button5,button6,button7,button8,button9,button0,buttonpi]
 app.current_numbers = []
 app.currentnumber = ''
 app.newnumber = 0
-result = Label(app.currentnumber,200,200,fill='white',size=30)
+result = Label(app.currentnumber,200,70,fill='dimgrey',size=35)
 
 def keyChecker(X, Y):
     global operator
@@ -81,64 +97,136 @@ def keyChecker(X, Y):
                 app.currentnumber += str(app.current_numbers[k])
                 print(app.currentnumber)
             result.value = app.currentnumber
+            
     
 def onMousePress(mouseX,mouseY):
     global operator
 
+    ##Checks whether add has been pressed and clears the numbers, stores new number
     if addition.contains(mouseX, mouseY):
         operator = 'plus'
-        app.newnumber = int(app.currentnumber)
+        app.newnumber = float(app.currentnumber)
         app.currentnumber = ''
         app.current_numbers = []
         result.value = ''
 
+    ##Checks whether exponent has been pressed and clears the numbers, stores new number
+    elif exponent.contains(mouseX, mouseY):
+        if app.currentnumber != '': 
+            operator = 'exponent'
+            app.newnumber = float(app.currentnumber)
+            app.currentnumber = ''
+            app.current_numbers = []
+            result.value = ''
+
+    ##Checks whether minus has been pressed and clears the numbers, stores new number
     elif minus.contains(mouseX, mouseY):
         operator = 'subtract'
-        app.newnumber = int(app.currentnumber)
+        app.newnumber = float(app.currentnumber)
         app.currentnumber = ''
         app.current_numbers = []
         result.value = ''
 
+    elif root.contains(mouseX, mouseY):
+        if app.currentnumber != '': 
+            app.currentnumber = math.sqrt(float(app.currentnumber))
+            total = app.currentnumber
+            result.value = str(total)
+            app.currentnumber = total
+            app.current_numbers = []
+
+    elif modulo.contains(mouseX, mouseY):
+        if app.currentnumber != '': 
+            operator = 'modulus'
+            app.newnumber = float(app.currentnumber)
+            app.currentnumber = ''
+            app.current_numbers = []
+            result.value = ''
+
+    ##Checks whether multiply has been pressed and clears the numbers, stores new number
     elif multiply.contains(mouseX, mouseY):
         operator = 'multiply'
-        app.newnumber = int(app.currentnumber)
+        app.newnumber = float(app.currentnumber)
         app.currentnumber = ''
         app.current_numbers = []
         result.value = ''
 
+    ##Checks whether divide has been pressed and clears the numbers, stores new number
     elif division.contains(mouseX, mouseY):
         operator = 'divide'
-        app.newnumber = int(app.currentnumber)
+        app.newnumber = float(app.currentnumber)
         app.currentnumber = ''
         app.current_numbers = []
         result.value = ''
     
+    ##Handles negative operator
     elif negative.contains(mouseX, mouseY):
-        operator = 'negative'
-        app.currentnumber = int(app.currentnumber)*-1
-        app.currentnumber = str(app.currentnumber)
-        result.value = app.currentnumber
+        if app.currentnumber != '':  # Check if current number is not empty
+            app.currentnumber = float(app.currentnumber) * -1
+            app.currentnumber = str(app.currentnumber)
+            result.value = str(app.currentnumber)
+
+    elif clear.contains(mouseX,mouseY):
+        operator = 'clear'
+        result.value = ''
+        app.currentnumber = ''
+        app.newnumber = None
+        app.current_numbers = []
+
+
+
 
     elif equals.contains(mouseX,mouseY):
+
+        ##Handles the addition operator
         if operator == 'plus':
-            total = app.newnumber + int(app.currentnumber)
-            result.value = str(total)
-            app.currentnumber = 0
+            if app.currentnumber != '':
+                total = app.newnumber + float(app.currentnumber)
+                result.value = str(total)
+                app.currentnumber = total
+                app.current_numbers = []
 
+        ## Handles the subtraction operator
         elif operator == 'subtract':
-            total = app.newnumber - int(app.currentnumber)
-            result.value = str(total)
-            app.currentnumber = total
+            if app.currentnumber != '':
+                total = app.newnumber - float(app.currentnumber)
+                result.value = str(total)
+                app.currentnumber = total
+                app.current_numbers = []
 
+        ## Handles the multiplication operator
         elif operator == 'multiply':
-            total = app.newnumber * int(app.currentnumber)
-            result.value = str(total)
-            app.currentnumber = total
+            if app.currentnumber != '':
+                total = app.newnumber * float(app.currentnumber)
+                result.value = str(total)
+                app.currentnumber = total
+                app.current_numbers = []
 
+        ## Handles the division operator 
         elif operator == 'divide':
-            total = app.newnumber / int(app.currentnumber)
-            result.value = str(total)
-            app.currentnumber = total
+            if app.currentnumber != '':
+                total = app.newnumber / float(app.currentnumber)
+                result.value = str(total)
+                app.currentnumber = total
+                app.current_numbers = []
+
+        elif operator == 'exponent':
+            if app.currentnumber != '':
+                app.currentnumber = float(app.currentnumber)
+                total = app.newnumber ** app.currentnumber
+                result.value = str(total)
+                app.currentnumber = total
+                app.current_numbers = []
+
+        elif operator == 'modulus':
+            if app.currentnumber != '':
+                app.currentnumber = float(app.currentnumber)
+                total = app.newnumber % app.currentnumber
+                result.value = str(total)
+                app.currentnumber = total
+                app.current_numbers = []
+
+        
     else:
         keyChecker(mouseX, mouseY)
 
