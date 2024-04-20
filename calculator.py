@@ -44,6 +44,9 @@ button9Label = Label('9',160,260,fill='white',size=26)
 addition = Rect(340,120,40,40,fill='gray')
 additonLabel = Label('+',360,140,fill='white',size=26)
 
+minus = Rect(340,180,40,40,fill='gray')
+minusLabel = Label('-',360,200,fill='white',size=26)
+
 equals = Rect(340,300,40,40,fill='gray')
 equalsLabel = Label('=',360,320,fill='white',size=26)
 
@@ -74,10 +77,21 @@ def onMousePress(mouseX,mouseY):
         app.currentnumber = ''
         app.current_numbers = []
         result.value = ''
+    elif minus.contains(mouseX, mouseY):
+        operator = 'subtract'
+        app.newnumber = int(app.currentnumber)
+        app.currentnumber = ''
+        app.current_numbers = []
+        result.value = ''
     elif equals.contains(mouseX,mouseY):
         if operator == 'plus':
             total = app.newnumber + int(app.currentnumber)
             result.value = str(total)
+            app.currentnumber = total
+        elif operator == 'subtract':
+            total = app.newnumber - int(app.currentnumber)
+            result.value = str(total)
+            app.currentnumber = total
     else:
         keyChecker(mouseX, mouseY)
 
