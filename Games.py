@@ -63,23 +63,24 @@ tempVar = 0
 ## ----------------------------------------------------- ##
 ##                   /Main While Loop/                     
 ## ----------------------------------------------------- ##
-"""while alive:
+drawSnake()
+while alive:
 
     tempVar += 1
 
 
     if direction == 'd':
         for segment in snakeSegments:
-            segment[0] += 20
+            snake.centerX += 20
     if direction == 'a':
         for segment in snakeSegments:
-            segment[0] -= 20
+            snake.centerX -= 20
     if direction == 'w':
         for segment in snakeSegments:
-            segment[1] += 20
+            snake.centerY += 20
     if direction == 's':
         for segment in snakeSegments:
-            segment[1] -= 20            
+            snake.centerY -= 20            
 
     drawSnake()
 
@@ -92,10 +93,8 @@ tempVar = 0
         break
     ## IF snake hitshape apple apple_x += snakeSeg
 
-"""
-drawSnake()
-snakeSegments = [[125, 125], [155, 125], [175, 125]] 
-drawSnake()
+
+
 
 
 
