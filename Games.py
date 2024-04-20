@@ -56,7 +56,7 @@ BottomWall = Line(10,380,390,380, lineWidth=10, fill='black')
 possible_x_coords = [25 , 45 , 65 , 85 , 115, 135, 155, 175, 195, 215, 235, 255, 275, 295, 315, 335, 355, 375]
 possible_y_coords = [105, 105, 125, 145, 165, 185, 205, 225, 245, 265, 285, 305, 325, 345, 365]
 alive = True
-snakeSegments = [[115, 125]] 
+snakeSegments = [[105, 115]] 
 direction = 'd'
 tempVar = 0
 app.stepsPerSecond = 1
