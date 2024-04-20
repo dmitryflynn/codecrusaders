@@ -11,8 +11,8 @@ public class Main {
 
         //Making The Scanner
         Scanner scanner = new Scanner(System.in);
-        String LInput = scanner.nextLine();
-        System.out.println(LInput);
+        //String LInput = scanner.nextLine();
+        //System.out.println(LInput);
 
         Screen  theScreen = new Screen();
 
