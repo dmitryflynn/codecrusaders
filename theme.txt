@@ -8,11 +8,11 @@ Create a project that can impove students life
 
 Groups:
 
-Games: Snake, 
+Games: Snake, (Python)
 
 Scdecule: Add stuff (Title, date, notes), Remove stuff(Title), Reminders (Headsup top right of app)
 
-CALUCLATOR: Basic math, Slope Getter
+CALUCLATOR: Basic math, Slope Getter (Python)
 
 Volunteer Hour tracker: keep track of hours add stuff(Total hour, What u did, contanct info)
 
