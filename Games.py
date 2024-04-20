@@ -66,29 +66,30 @@ app.stepsPerSecond = 1
 ## ----------------------------------------------------- ##
 ##                   /Main While Loop/                     
 ## ----------------------------------------------------- ##
-drawSnake()
 while alive:
 
     tempVar += 1
 
+    #Letting time go by 1 second / adding to the counter
     def onStep():
         counter.value += 1
 
-    def onKeyPress(key):
+        #Swaping direction per movement
+        def onKeyPress(key):
+            if key == 'd':  
+                for segment in snakeSegments:
+                    app.snake.centerX += 20
+            if key == 'a':
+                for segment in snakeSegments:
+                    app.snake.centerX -= 20
+            if key == 's':
+                for segment in snakeSegments:
+                    app.snake.centerY += 20
+            if key == 'w':
+                for segment in snakeSegments:
+                    app.snake.centerY -= 20  
 
 
-        if key == 'd':  
-            for segment in snakeSegments:
-                app.snake.centerX += 20
-        if key == 'a':
-            for segment in snakeSegments:
-                app.snake.centerX -= 20
-        if key == 's':
-            for segment in snakeSegments:
-                app.snake.centerY += 20
-        if key == 'w':
-            for segment in snakeSegments:
-                app.snake.centerY -= 20                     
 
     drawSnake()
 
