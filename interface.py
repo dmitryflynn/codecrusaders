@@ -13,7 +13,7 @@ def main():
         open_file("calculator.py")
 
     def open_file2():
-        open_file("Games.py")
+        open_file("SnakeGame.py")
 
     # Create buttons to open different files
     button1 = tk.Button(root, text="Calculator", command=open_file1)
