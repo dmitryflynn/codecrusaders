@@ -90,20 +90,12 @@ while alive:
         def onKeyPress(key):
             if key == 'd':  
                 direction = 'd'
-                for segment in snakeSegments:
-                    app.snake.centerX += 20
             if key == 'a':
                 direction = 'a'
-                for segment in snakeSegments:
-                    app.snake.centerX -= 20
             if key == 's':
                 direction = 's'
-                for segment in snakeSegments:
-                    app.snake.centerY += 20
             if key == 'w':
                 direction = 'w'
-                for segment in snakeSegments:
-                    app.snake.centerY -= 20  
 
 
 
