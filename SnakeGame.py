@@ -106,17 +106,17 @@ class SnakeGame:
     ## ---------------------------------------- ##
     def draw_grid(self): 
 
-        for x in range(-GRID_WIDTH // 2, GRID_WIDTH // 2 + 1):            ##For every vertical line AKA x
-            self.pen.goto(x * CELL_SIZE, -GRID_HEIGHT * CELL_SIZE // 2)   ##go to the spot
-            self.pen.pendown()                                            ##start drwaing
-            self.pen.goto(x * CELL_SIZE, GRID_HEIGHT * CELL_SIZE // 2)    ##draw the line
-            self.pen.penup()                                              ##stop drawing
+        for x in range(-GRID_WIDTH // 2, GRID_WIDTH // 2 + 1):                             ##For every vertical line AKA x
+            self.pen.goto(x * CELL_SIZE - CELL_SIZE // 2, -GRID_HEIGHT * CELL_SIZE // 2)   ##go to the spot
+            self.pen.pendown()                                                             ##start drwaing
+            self.pen.goto(x * CELL_SIZE - CELL_SIZE // 2, GRID_HEIGHT * CELL_SIZE // 2)    ##draw the line
+            self.pen.penup()                                                               ##stop drawing
 
-        for y in range(-GRID_HEIGHT // 2, GRID_HEIGHT // 2 + 1):          ##For every hortzianl line AKA y
-            self.pen.goto(-GRID_WIDTH * CELL_SIZE // 2, y * CELL_SIZE)    ##go to the begain
-            self.pen.pendown()                                            ##start drawing
-            self.pen.goto(GRID_WIDTH * CELL_SIZE // 2, y * CELL_SIZE)     ##draw the line
-            self.pen.penup()                                              ##stop drawing
+        for y in range(-GRID_HEIGHT // 2, GRID_HEIGHT // 2 + 1):                           ##For every hortzianl line AKA y
+            self.pen.goto(-GRID_WIDTH * CELL_SIZE // 2, y * CELL_SIZE - CELL_SIZE // 2)    ##go to the begain
+            self.pen.pendown()                                                             ##start drawing
+            self.pen.goto(GRID_WIDTH * CELL_SIZE // 2, y * CELL_SIZE - CELL_SIZE // 2)     ##draw the line
+            self.pen.penup()                                                               ##stop drawing
 
 
     ## ---------------------------------------- ##
