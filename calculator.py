@@ -209,13 +209,15 @@ def onMousePress(mouseX,mouseY):
 
 
 
-    elif equals.contains(mouseX,mouseY):
-
-        ##Handles the addition operator
+    elif equals.contains(mouseX, mouseY):
+    ##Handles the addition operator
         if operator == 'plus':
             if app.currentnumber != '':
                 total = app.newnumber + float(app.currentnumber)
-                result.value = str(total)
+                if total > 100000000:
+                    result.value = 'Overflow'
+                else:
+                    result.value = str(total)
                 app.currentnumber = total
                 app.current_numbers = []
 
@@ -223,7 +225,10 @@ def onMousePress(mouseX,mouseY):
         elif operator == 'subtract':
             if app.currentnumber != '':
                 total = app.newnumber - float(app.currentnumber)
-                result.value = str(total)
+                if total > 100000000:
+                    result.value = 'Overflow'
+                else:
+                    result.value = str(total)
                 app.currentnumber = total
                 app.current_numbers = []
 
@@ -231,20 +236,25 @@ def onMousePress(mouseX,mouseY):
         elif operator == 'multiply':
             if app.currentnumber != '':
                 total = app.newnumber * float(app.currentnumber)
-                result.value = str(total)
+                if total > 100000000:
+                    result.value = 'Overflow'
+                else:
+                    result.value = str(total)
                 app.currentnumber = total
                 app.current_numbers = []
 
         ## Handles the division operator 
         elif operator == 'divide':
-            if app.currentnumber == 0:
+            if app.currentnumber == '0':
                 result.value = 'Undefined'
                 app.currentnumber = ''
                 app.current_numbers = []
-            
-            elif app.currentnumber != '' and app.currentnumber != 0:
+            elif app.currentnumber != '' and app.currentnumber != '0':
                 total = app.newnumber / float(app.currentnumber)
-                result.value = str(total)
+                if total > 100000000:
+                    result.value = 'Overflow'
+                else:
+                    result.value = str(total)
                 app.currentnumber = total
                 app.current_numbers = []
 
@@ -252,7 +262,10 @@ def onMousePress(mouseX,mouseY):
             if app.currentnumber != '':
                 app.currentnumber = float(app.currentnumber)
                 total = app.newnumber ** app.currentnumber
-                result.value = str(total)
+                if total > 100000000:
+                    result.value = 'Overflow'
+                else:
+                    result.value = str(total)
                 app.currentnumber = total
                 app.current_numbers = []
 
@@ -260,12 +273,15 @@ def onMousePress(mouseX,mouseY):
             if app.currentnumber != '':
                 app.currentnumber = float(app.currentnumber)
                 total = app.newnumber % app.currentnumber
-                result.value = str(total)
+                if total > 100000000:
+                    result.value = 'Overflow'
+                else:
+                    result.value = str(total)
                 app.currentnumber = total
                 app.current_numbers = []
 
-        
     else:
         keyChecker(mouseX, mouseY)
+
 
 cmu_graphics.run()

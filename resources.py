@@ -7,7 +7,7 @@ def open_file(file_path):
 
 def main():
     root = tk.Tk() #initialize tkinter
-    root.title("Productivity Menu") #set title to productivity menu
+    root.title("Resources Menu") #set title to productivity menu
     root.configure(bg='#ADD8E6') #set background
 
     root.attributes('-fullscreen', True)
@@ -21,7 +21,7 @@ def main():
         e.widget.config(bg='#ADD8E6')  #change background color back to original color on leave
 
     def open_file1():
-        open_file("suicideHelp.py")
+        open_file("sucideHelp.py")
 
     def open_file2():
         open_file("Map.py")

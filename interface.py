@@ -30,18 +30,18 @@ def main():
 
     button1 = tk.Button(root, text="Productivity", command=open_file1, width=20, height=5, bg='#ADD8E6', fg='white', relief=tk.FLAT, activebackground='#61cefe', activeforeground='white', borderwidth=0, highlightthickness=0, font=custom_font)
     button1.pack(side='top', fill='both', expand=True)
-    button1.bind("<Enter>", on_enter)  #bind the Enter event to on_enter function
-    button1.bind("<Leave>", on_leave)  #bind the Leave event to on_leave function
+    button1.bind("<Enter>", on_enter)  #bind the enter event to on_enter function
+    button1.bind("<Leave>", on_leave)  #bind the leave event to on_leave function
 
     button2 = tk.Button(root, text="Entertainment", command=open_file2, width=20, height=5, bg='#ADD8E6', fg='white', relief=tk.FLAT, activebackground='#61cefe', activeforeground='white', borderwidth=0, highlightthickness=0, font=custom_font)
     button2.pack(side='top', fill='both', expand=True)
-    button2.bind("<Enter>", on_enter)  #bind the Enter event to on_enter function
-    button2.bind("<Leave>", on_leave)  #bind the Leave event to on_leave function
+    button2.bind("<Enter>", on_enter)  #bind the enter event to on_enter function
+    button2.bind("<Leave>", on_leave)  #bind the leave event to on_leave function
 
     button3 = tk.Button(root, text="Resources", command=open_file3, width=20, height=5, bg='#ADD8E6', fg='white', relief=tk.FLAT, activebackground='#61cefe', activeforeground='white', borderwidth=0, highlightthickness=0, font=custom_font)
     button3.pack(side='top', fill='both', expand=True)
-    button3.bind("<Enter>", on_enter)  #bind the Enter event to on_enter function
-    button3.bind("<Leave>", on_leave)  #bind the Leave event to on_leave function
+    button3.bind("<Enter>", on_enter)  #bind the enter event to on_enter function
+    button3.bind("<Leave>", on_leave)  #bind the leave event to on_leave function
 
     root.mainloop()
 
