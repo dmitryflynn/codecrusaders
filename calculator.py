@@ -237,7 +237,12 @@ def onMousePress(mouseX,mouseY):
 
         ## Handles the division operator 
         elif operator == 'divide':
-            if app.currentnumber != '':
+            if app.currentnumber == 0:
+                result.value = 'Undefined'
+                app.currentnumber = ''
+                app.current_numbers = []
+            
+            elif app.currentnumber != '':
                 total = app.newnumber / float(app.currentnumber)
                 result.value = str(total)
                 app.currentnumber = total
