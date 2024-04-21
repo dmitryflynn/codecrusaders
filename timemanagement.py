@@ -32,7 +32,7 @@ def main():
                                  borderwidth=0, highlightthickness=0)
     external_button.pack(pady=10)
 
-    #set button border color to #61cefe
+    #set button border color to #61cefes
     external_button.configure(highlightbackground="#61cefe")
 
     root.mainloop() #runs main tkinter function
