@@ -1,13 +1,13 @@
 from cmu_graphics import *
 
 app.total_hours = 0
-background = Rect(0, 0, 400, 400, fill='lightgrey')
+background = Rect(0, 0, 400, 400, fill='skyblue')
 title = Label('Honor Society Tracker', 200, 20, size=25)
 awards_label_1 = Label('', 200, 320, size=15)
 awards_label_2 = Label('', 200, 340, size=15)
 
 inputer = Group(
-    Rect(20, 50, 360, 40, fill='lightgrey', border='darkgrey'),
+    Rect(20, 50, 360, 40, fill='lightgrey', border='blue'),
     Label('Enter in Your Hours', 190, 70, size=20),
 )
 
