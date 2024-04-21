@@ -5,11 +5,11 @@ def open_file(file_path):
     subprocess.Popen(['python', file_path])
 
 def main():
-    root = tk.Tk()
+    root = tk.Tk() #new instance of main window
     root.title("Button Demo")
-    root.configure(bg='#ADD8E6')  # Set background color to light blue
+    root.configure(bg='#ADD8E6')  #set background color to light blue
 
-    # Define a function to open a specific file when a button is clicked
+    #define functions to open a specific file when a button is clicked
     def open_file1():
         open_file("timemanagement.py")
 
@@ -19,17 +19,21 @@ def main():
     def open_file3():
         open_file("hourstracker.py")
 
-    # Create buttons to open different files with flat appearance and light blue color scheme
+    #create buttons to open different files with flat appearance and light blue color scheme
+
+    #timemanagement
     button1 = tk.Button(root, text="Time Management", command=open_file1, bg='#ADD8E6', fg='white', relief=tk.FLAT, activebackground='#61cefe', activeforeground='white', borderwidth=0, highlightthickness=0)
     button1.pack(pady=10)
 
+    #calculator
     button2 = tk.Button(root, text="Calculator", command=open_file2, bg='#ADD8E6', fg='white', relief=tk.FLAT, activebackground='#61cefe', activeforeground='white', borderwidth=0, highlightthickness=0)
     button2.pack(pady=10)
 
+    #honor society tracker
     button3 = tk.Button(root, text="Honor Society Tracker", command=open_file3, bg='#ADD8E6', fg='white', relief=tk.FLAT, activebackground='#61cefe', activeforeground='white', borderwidth=0, highlightthickness=0)
     button3.pack(pady=10)
 
-    root.mainloop()
+    root.mainloop() #runs main tkinter function
 
 if __name__ == "__main__":
     main()
