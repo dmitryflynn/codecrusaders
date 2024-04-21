@@ -10,7 +10,7 @@ def main():
     root.configure(bg='#ADD8E6')  # Set background color to light blue
 
     # Define a function to open a specific file when a button is clicked
-    .
+    
     def open_file1():
         open_file("calculator.py")
 
