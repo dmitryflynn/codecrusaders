@@ -62,11 +62,8 @@ def paddleBAi():
         paddleB.sety(paddleB.ycor() + 0.1)                                            ##if need to move then do it
 
 
-## ---------------------------------------- ##
-##              Update paddle                        
-## ---------------------------------------- ##
-def updatePaddleA(x, y):
-    paddleAMove(y)           ##Moves paddle
+# Bind updatePaddleA to mouse clicks within the window
+
 
 
 # Keyboard bindings (for exiting the game) 
@@ -81,9 +78,8 @@ screen.onscreenclick(updatePaddleA)
 ##             Main game loop                       
 ## ---------------------------------------- ##
 while True:
-
-    screen.update()                        ##Updates screen
-
+    screen.update()
+    screen.onscreenclick(updatePaddleA)
     # Move the ball
     ball.setx(ball.xcor() + ball.dx)       ##Moves x of ball
     ball.sety(ball.ycor() + ball.dy)       ##Moves y of ball
