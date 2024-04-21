@@ -5,19 +5,19 @@ background = Rect(0,0,400,400,fill='skyblue')
 title = Label('Calculator App', 200,20,size=25)
 screen = Rect(20,40,360,60,fill='white',border='blue')
 
-button1 = Rect(20,120,40,40,fill='gray')
+button1 = Rect(20,120,40,40,fill='gray') #Button1
 button1.value = 1
 button1Label = Label('1',40,140,fill='white',size=26)
 
-button2 = Rect(80,120,40,40,fill='gray')
+button2 = Rect(80,120,40,40,fill='gray') #Button2
 button2.value = 2
 button2Label = Label('2',100,140,fill='white',size=26)
 
-button3 = Rect(140,120,40,40,fill='gray')
+button3 = Rect(140,120,40,40,fill='gray') #Button3
 button3.value = 3
 button3Label = Label('3',160,140,fill='white',size=26)
 
-button4 = Rect(20,180,40,40,fill='gray')
+button4 = Rect(20,180,40,40,fill='gray') #Button4
 button4.value = 4
 button4Label = Label('4',40,200,fill='white',size=26)
 

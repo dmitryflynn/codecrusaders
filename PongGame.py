@@ -54,12 +54,12 @@ screen.listen()
 screen.onkeypress(screen.bye, "Escape")
 
 # Bind update_paddle_a to mouse clicks within the window
-screen.onscreenclick(update_paddle_a)
+
 
 # Main game loop
 while True:
     screen.update()
-
+    screen.onscreenclick(update_paddle_a)
     # Move the ball
     ball.setx(ball.xcor() + ball.dx)
     ball.sety(ball.ycor() + ball.dy)
