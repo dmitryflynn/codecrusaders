@@ -23,11 +23,19 @@ def main():
     def open_file1():
         open_file("suicideHelp.py")
 
+    def open_file2():
+        open_file("Map.py")
+
 
     button1 = tk.Button(root, text="Suicide Help", command=open_file1, width=20, height=5, bg='#ADD8E6', fg='white', relief=tk.FLAT, activebackground='#61cefe', activeforeground='white', borderwidth=0, highlightthickness=0, font=custom_font)
     button1.pack(side='top', fill='both', expand=True)
     button1.bind("<Enter>", on_enter)
     button1.bind("<Leave>", on_leave)
+
+    button2 = tk.Button(root, text="DigiPen Campus Map", command=open_file2, width=20, height=5, bg='#ADD8E6', fg='white', relief=tk.FLAT, activebackground='#61cefe', activeforeground='white', borderwidth=0, highlightthickness=0, font=custom_font)
+    button2.pack(side='top', fill='both', expand=True)
+    button2.bind("<Enter>", on_enter)
+    button2.bind("<Leave>", on_leave)
 
 
 
