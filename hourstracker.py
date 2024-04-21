@@ -23,7 +23,9 @@ def add_entry(entry):
     #sets entries to a globale variable
     global entries
     if len(entries) >= 10: #checks whether they have 10 entries 
-        entries = entries.pop(0) #remove oldest entry if list is full
+        background.bottom += 20 #remove oldest entry if list is full
+        awards_label_1.centerX -= 20
+        awards_label_2.centerx -= 20
     entries.append(entry) #adds the entry to the entries list
     display_entries() # runs display_entries function
     check_awards(app.total_hours) #check whether you are available for any awards
@@ -42,9 +44,7 @@ def onMousePress(mouseX, mouseY):  #onMousePress (builit in function in CMU)
 def display_entries(): #declare a display_entries function
     global entries
     y_position = 120 #the starting y postion (the first entrie's y position is at 120)
-    realentries = entries
-
-    for entry in realentries: #loop through the entries list
+    for entry in entries: #loop through the entries list
         app.entry_label = Label(f'{entry[0]} - {entry[1]} hours', 200, y_position, size=15) #create label calling tuple values
         y_position += 20 #increment the y position so that the entries go down the screen
 
