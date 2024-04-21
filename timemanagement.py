@@ -23,7 +23,7 @@ def main():
     tip3.pack(anchor="w", padx=20)
 
     # Add a button to open external resources
-    external_button = tk.Button(root, text="Find more time management tips online", command=lambda: open_link("https://www.mindtools.com/pages/main/newMN_HTE.htm"),
+    external_button = tk.Button(root, text="Find more time management tips online", command=lambda: open_link("https://www.mindtools.com/arb6j5a/what-is-time-management"),
                                  bg='#61cefe', fg='black', relief=tk.FLAT, activebackground='#61cefe', activeforeground='black',
                                  borderwidth=0, highlightthickness=0)
     external_button.pack(pady=10)
