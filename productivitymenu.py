@@ -28,6 +28,9 @@ def main():
 
     def open_file3():
         open_file("calculator.py")
+    
+    def open_file4():
+        open_file("suicideHelp.py")
 
     button1 = tk.Button(root, text="Time Management", command=open_file1, width=20, height=5, bg='#ADD8E6', fg='white', relief=tk.FLAT, activebackground='#61cefe', activeforeground='white', borderwidth=0, highlightthickness=0, font=custom_font)
     button1.pack(side='top', fill='both', expand=True)
@@ -43,6 +46,8 @@ def main():
     button3.pack(side='top', fill='both', expand=True)
     button3.bind("<Enter>", on_enter)
     button3.bind("<Leave>", on_leave)
+
+
 
     root.mainloop()
 
