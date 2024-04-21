@@ -5,8 +5,8 @@ import turtle
 import random
 
 # Setting up the screen
-screen = turtle.Screen()                           ##Making sreen
-screen.title("Brick Breaker")                      ##Makign ttitle
+screen = turtle.Screen()                           ##Making screen
+screen.title("Brick Breaker")                      ##Makign title
 screen.bgcolor("black")                            ##Making clolor black
 screen.setup(width=600, height=600)                ##Size
 screen.tracer(0)                                   ##Turning of animation
