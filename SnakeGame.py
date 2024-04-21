@@ -58,6 +58,10 @@ class SnakeGame:
         self.window.onkeypress(self.goLeft, "a")           ##if key was A do goLeft Method
         self.window.onkeypress(self.goRight, "d")          ##if key was D do goRight method
 
+        # Keyboard bindings (for exiting the game)
+        self.window.listen()                                     ##Listening
+        self.window.onkeypress(self.window.bye, "Escape")        ##IF esc leave
+
         self.update()                                       ##Start loop
 
 
@@ -215,3 +219,4 @@ class SnakeGame:
 # Runs the acutal game lol
 game = SnakeGame()
 game.window.mainloop()
+

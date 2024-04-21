@@ -1,94 +1,125 @@
+## LOG:
+## Noah Wichman
+## 4/20 4:29 pm PCT  - 6:53 pm PCT
+## TOTAL HOURS: 2 hours and 24 mins
+
+
+
+## ---------------------------------------- ##
+##                 Imports                       
+## ---------------------------------------- ##
 import turtle
 
-# Set up the screen
-screen = turtle.Screen()
-screen.title("Pong")
-screen.bgcolor("black")
-screen.setup(width=600, height=400)
-screen.tracer(0)  # Turn off animation
+# Setting up the screen
+screen = turtle.Screen()                     ##Makeing screen
+screen.title("Pong")                         ##Setting title
+screen.bgcolor("black")                      ##Bg black
+screen.setup(width=600, height=400)          ##Size
+screen.tracer(0)                             ##Turn off animation       
 
 # Paddle A (controlled by mouse)
-paddle_a = turtle.Turtle()
-paddle_a.speed(0)
-paddle_a.shape("square")
-paddle_a.color("white")
-paddle_a.shapesize(stretch_wid=5, stretch_len=1)
-paddle_a.penup()
-paddle_a.goto(-250, 0)
+paddleA = turtle.Turtle()                           ##Making tutrtle
+paddleA.speed(0)                                    ##Setting speed 0
+paddleA.shape("square")                             ##Making the sqaure
+paddleA.color("white")                              ##setting color
+paddleA.shapesize(stretch_wid=5, stretch_len=1)     ##setting size
+paddleA.penup()                                     ##Stop drawing
+paddleA.goto(-250, 0)                               ##moving pen
 
 # Paddle B (controlled by AI)
-paddle_b = turtle.Turtle()
-paddle_b.speed(0)
-paddle_b.shape("square")
-paddle_b.color("white")
-paddle_b.shapesize(stretch_wid=5, stretch_len=1)
-paddle_b.penup()
-paddle_b.goto(250, 0)
+paddleB = turtle.Turtle()                           ##Making tutrtle
+paddleB.speed(0)                                    ##Setting speed 0
+paddleB.shape("square")                             ##Making the sqaure
+paddleB.color("white")                              ##setting color
+paddleB.shapesize(stretch_wid=5, stretch_len=1)     ##setting size
+paddleB.penup()                                     ##Stop drawing
+paddleB.goto(250, 0)                                ##moving pen
 
 # Ball
-ball = turtle.Turtle()
-ball.speed(0)
-ball.shape("square")
-ball.color("white")
-ball.penup()
-ball.goto(0, 0)
-ball.dx = 0.1
-ball.dy = 0.1
-
-# Functions to move paddles
-def paddle_a_move(y):
-    paddle_a.sety(y)
-
-def paddle_b_ai():
-    if ball.ycor() < paddle_b.ycor() and abs(ball.ycor() - paddle_b.ycor()) > 20:
-        paddle_b.sety(paddle_b.ycor() - 0.1)
-    elif ball.ycor() > paddle_b.ycor() and abs(ball.ycor() - paddle_b.ycor()) > 20:
-        paddle_b.sety(paddle_b.ycor() + 0.1)
-
-# Function to update paddle_a position based on mouse click
-def update_paddle_a(x, y):
-    paddle_a_move(y)
-
-# Keyboard bindings (for exiting the game)
-screen.listen()
-screen.onkeypress(screen.bye, "Escape")
-
-# Bind update_paddle_a to mouse clicks within the window
+ball = turtle.Turtle()                              ## Making a turtle 
+ball.speed(0)                                       ## Setting speed 0
+ball.shape("square")                                ## Making the sqaure
+ball.color("white")                                 ##setting color
+ball.penup()                                        ##Stop drawing
+ball.goto(0, 0)                                     ##moving pen
+ball.dx = 0.1                                       ##Setting the ball velocity x
+ball.dy = 0.1                                       ##Setting the ball velocity Y
 
 
-# Main game loop
+## ---------------------------------------- ##
+##            Set paddleA location                       
+## ---------------------------------------- ##
+def paddleAMove(y):
+    paddleA.sety(y) ##Sets the paddles new Y location
+
+## ---------------------------------------- ##
+##            Ai location paddle                       
+## ---------------------------------------- ##
+def paddleBAi():
+    if ball.ycor() < paddleB.ycor() and abs(ball.ycor() - paddleB.ycor()) > 20:       ## Returns current y of the ball and checks to see if need to move
+        paddleB.sety(paddleB.ycor() - 0.1)                                            ## If need to move do it 
+    elif ball.ycor() > paddleB.ycor() and abs(ball.ycor() - paddleB.ycor()) > 20:     ## checks current x of ball and see if need to move
+        paddleB.sety(paddleB.ycor() + 0.1)                                            ##if need to move then do it
+
+
+# Bind updatePaddleA to mouse clicks within the window
+
+
+
+# Keyboard bindings (for exiting the game) 
+screen.listen()                                      ##Listeing
+screen.onkeypress(screen.bye, "Escape")              ##if Esc leave 
+
+def updatePaddleA(x, y):
+    # Ensure the y-coordinate stays within the bounds of the screen
+    if y > 190:
+        y = 190
+    elif y < -190:
+        y = -190
+    
+    # Move the left paddle (paddleA) to the y-coordinate of the mouse click
+    paddleA.sety(y)
+
+
+# Bind updatePaddleA to mouse clicks within the window
+screen.onscreenclick(updatePaddleA)
+
+
+## ---------------------------------------- ##
+##             Main game loop                       
+## ---------------------------------------- ##
 while True:
     screen.update()
-    screen.onscreenclick(update_paddle_a)
+    screen.onscreenclick(updatePaddleA)
     # Move the ball
-    ball.setx(ball.xcor() + ball.dx)
-    ball.sety(ball.ycor() + ball.dy)
+    ball.setx(ball.xcor() + ball.dx)       ##Moves x of ball
+    ball.sety(ball.ycor() + ball.dy)       ##Moves y of ball
 
     # Border checking
-    if ball.ycor() > 190:
-        ball.sety(190)
-        ball.dy *= -1
+    if ball.ycor() > 190:                  ##If off screen
+        ball.sety(190)                     ##reast ball
+        ball.dy *= -1                      ##reast velocity
 
-    if ball.ycor() < -190:
-        ball.sety(-190)
-        ball.dy *= -1
+    if ball.ycor() < -190:                 ##If off screen
+        ball.sety(-190)                    ##reast ball
+        ball.dy *= -1                      ##reast velocity
 
-    if ball.xcor() > 290:
-        ball.goto(0, 0)
-        ball.dx *= -1
+    if ball.xcor() > 290:                  ##If off screen
+        ball.goto(0, 0)                    ##reast ball
+        ball.dx *= -1                      ##reast velocity
 
-    if ball.xcor() < -290:
-        ball.goto(0, 0)
-        ball.dx *= -1
+    if ball.xcor() < -290:                 ##If off screen
+        ball.goto(0, 0)                    ##reast ball
+        ball.dx *= -1                      ##reast velocity
 
     # Paddle B (AI control)
-    paddle_b_ai()
+    paddleBAi()
 
     # Paddle and ball collisions
-    if (ball.xcor() > 240 and ball.xcor() < 250) and (ball.ycor() < paddle_b.ycor() + 50 and ball.ycor() > paddle_b.ycor() - 50):
-        ball.setx(240)
-        ball.dx *= -1
+    if (ball.xcor() > 240 and ball.xcor() < 250) and (ball.ycor() < paddleB.ycor() + 50 and ball.ycor() > paddleB.ycor() - 50):           ###If balla hits Paddle b
+        ball.setx(240)                                                                                                                    ## set new x
+        ball.dx *= -1                                                                                                                     ##set new velocity
 
-    if (ball.xcor() < -240 and ball.xcor() > -250) and (ball.ycor() < paddle_a.ycor() + 50 and ball.ycor() > paddle_a.ycor() - 50):
-        ball.setx(-240)
-        ball.dx *= -1
+    if (ball.xcor() < -240 and ball.xcor() > -250) and (ball.ycor() < paddleA.ycor() + 50 and ball.ycor() > paddleA.ycor() - 50):         ##If balla hits Paddle a
+        ball.setx(-240)                                                                                                                   ## set new x
+        ball.dx *= -1                                                                                                                     ##set new velocity
