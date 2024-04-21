@@ -70,6 +70,17 @@ def paddleBAi():
 screen.listen()                                      ##Listeing
 screen.onkeypress(screen.bye, "Escape")              ##if Esc leave 
 
+def updatePaddleA(x, y):
+    # Ensure the y-coordinate stays within the bounds of the screen
+    if y > 190:
+        y = 190
+    elif y < -190:
+        y = -190
+    
+    # Move the left paddle (paddleA) to the y-coordinate of the mouse click
+    paddleA.sety(y)
+
+
 # Bind updatePaddleA to mouse clicks within the window
 screen.onscreenclick(updatePaddleA)
 
