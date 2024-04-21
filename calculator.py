@@ -1,9 +1,9 @@
 from cmu_graphics import *
 import math
 
-background = Rect(0,0,400,400,fill='lightgrey')
+background = Rect(0,0,400,400,fill='skyblue')
 title = Label('Calculator App', 200,20,size=25)
-screen = Rect(20,40,360,60,fill='white',border='darkgrey')
+screen = Rect(20,40,360,60,fill='white',border='blue')
 
 button1 = Rect(20,120,40,40,fill='gray')
 button1.value = 1
